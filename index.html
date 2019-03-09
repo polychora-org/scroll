@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>scroll</title>
+    <style>
+     * { margin: 0px; }
+     body, #content { background: top/auto 100% url("random.png") fixed; }
+     #content * { display: block; mix-blend-mode: difference; }
+     .stanza {
+       height: 200vh;
+       background: top/auto 50% url("random.png");
+       font-size: 200%;
+       white-space: pre;
+       color: white;
+     }
+     .stanza:last-child {
+       height: 100vh;
+       background: top/auto 100% url("random.png");
+     }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <div class="stanza"><h1>scroll</h1></div>
+      <div class="stanza"></div>
+      <div class="stanza">
+        now I know you are like me
+        exhausted and infinitely awaiting
+        the singular point of contact
+      </div>
+      <div class="stanza">
+        scintilla in a sea of noise
+        in thrall to plasticky caress
+      </div>
+    </div>
+  </body>
+</html>
