@@ -2,29 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     <title>scroll</title>
     <style>
      * { margin: 0px; }
-     body, #content { background: top/auto 100% url("random.png") fixed; }
-     #content * { display: block; mix-blend-mode: difference; }
+     #backdrop {
+       position: fixed;
+       background: url("random.png");
+       min-height: 50vh;
+       width: 100vw; 
+       mix-blend-mode: difference; 
+     }
+     #content {
+       background: url("random.png");
+     }
      .stanza {
-       height: 200vh;
-       background: top/auto 50% url("random.png");
-       font-size: 200%;
-       white-space: pre;
+       max-width: 100vw;
+       height: 256px;
+       padding-bottom: 256px;
+       mix-blend-mode: difference; 
+       font-family: "Courier New", monospace;
+       font-size: 18px;
+       white-space: pre-line;
+       padding-left: 1em;
        color: white;
      }
      .stanza:last-child {
        height: 100vh;
-       background: top/auto 100% url("random.png");
+       padding-bottom: 0;
      }
     </style>
   </head>
   <body>
+    <div id="backdrop"></div>
     <div id="content">
-      <div class="stanza"><h1>scroll</h1></div>
+      <div class="stanza">
+        <h1>scroll</h1></div>
       <div class="stanza"></div>
       <div class="stanza">
         now I know you are like me
