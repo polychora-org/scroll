@@ -7,26 +7,36 @@
     <title>scroll</title>
     <style>
      * { margin: 0px; }
-     #backdrop, #content {
-       background: url("random_color.png");
+     body {
+       height: 100vh;
+       overflow: hidden;
      }
+     #canvas { display: none; }
      #backdrop {
        position: fixed;
-       min-height: 50vh;
+       height: 100vh;
        width: 100vw; 
+       background-attachment: scroll;
+     }
+     #content {
+       position: relative;
+       height: 100vh;
+       overflow-y: scroll;
+       background-attachment: local;
+       scroll-snap-type: y mandatory;
        mix-blend-mode: difference; 
      }
      .left-inset { float: left; margin-right: 2em; }
      .stanza {
        max-width: 100vw;
        height: 256px;
-       padding-bottom: 768px;
-       mix-blend-mode: difference; 
+       padding-bottom: 512px;
        font-family: "Courier New", monospace;
        font-size: 18px;
        white-space: pre-line;
        padding-left: 1em;
        color: white;
+       scroll-snap-align: start;
      }
      .stanza:last-child {
        height: 100vh;
@@ -35,15 +45,17 @@
     </style>
   </head>
   <body>
+    <canvas id="canvas" width="256" height="256"></canvas>
     <div id="backdrop"></div>
     <div id="content">
       <div class="stanza">
-        <h1>scroll</h1></div>
-      <div class="stanza">
-        in thrall to plasticky caress
+        <h1>scroll</h1>
       </div>
       <div class="stanza">
-        <img class="left-inset" src="koko_winnie.png" />
+        in thrall
+        to plasticky caress
+      </div>
+      <div class="stanza">
         faces of loved ones
         eroded beyond recall
       </div>
@@ -56,5 +68,24 @@
         scintilla in a sea of static
       </div>
     </div>
+    <script type="text/javascript">
+      const getUint8 = () => Math.min(Math.floor(Math.random() * 256.0), 255);
+      const init = function() {
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext('2d');
+        const imageData = ctx.createImageData(256, 256);
+        for (let i = 0; i < imageData.data.length; i += 4) {
+          imageData.data[i + 0] = getUint8();
+          imageData.data[i + 1] = getUint8();
+          imageData.data[i + 2] = getUint8();
+          imageData.data[i + 3] = 255;
+        }
+        ctx.putImageData(imageData, 0, 0);
+        const data = "url(" + canvas.toDataURL() + ")";
+        document.getElementById("backdrop").style.backgroundImage = data;
+        document.getElementById("content").style.backgroundImage = data;
+      };
+      init();
+    </script>
   </body>
 </html>
