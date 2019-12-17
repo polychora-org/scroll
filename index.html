@@ -30,14 +30,16 @@
        max-width: 100vw;
        font-size: 32px;
        height: 512px;
-       padding-left: 1em;
+       padding-top: 256px;
        scroll-snap-align: start;
      }
      .stanza, h1 {
        font-family: "Courier New", monospace;
-       white-space: pre-wrap;
-       text-indent: 1em
+       white-space: pre-line;
+       padding-left: 1em;
        color: white;
+     }
+     .stanza:first-child {
      }
      .stanza:last-child {
        height: 100vh;
@@ -47,24 +49,26 @@
   </head>
   <body>
     <canvas id="canvas" width="256" height="256"></canvas>
-    <div id="backdrop"></div>
-    <div id="content">
-      <div class="stanza"><h1>SCROLL</h1></div>
-      <div class="stanza">
-        in thrall
-        to plasticky caress
-      </div>
-      <div class="stanza">
-        faces of loved ones
-        eroded beyond recall
-      </div>
-      <div class="stanza">
-        now I know you are like me
-        exhausted and infinitely awaiting
-      </div>
-      <div class="stanza">
-        the singular point of contact
-        scintilla in a sea of static
+    <div id="viewport">
+      <div id="backdrop"></div>
+      <div id="content">
+        <div class="stanza"><h1>SCROLL</h1></div>
+        <div class="stanza">
+          in thrall
+          to plasticky caress
+        </div>
+        <div class="stanza">
+          faces of loved ones
+          eroded beyond recall
+        </div>
+        <div class="stanza">
+          now I know you are like me
+          exhausted and infinitely awaiting
+        </div>
+        <div class="stanza">
+          the singular point of contact
+          scintilla in a sea of static
+        </div>
       </div>
     </div>
     <script type="text/javascript">
